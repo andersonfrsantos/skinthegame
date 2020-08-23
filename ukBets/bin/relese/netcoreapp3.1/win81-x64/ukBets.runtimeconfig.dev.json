@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Administrator\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Administrator\\.nuget\\packages",
+	  "C:\\NetCore\\Projetos\\ukBets\\bin\\relese\\netcoreapp3.1\\win81-x64"
+    ]
+  }
+}
