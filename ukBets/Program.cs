@@ -15,8 +15,6 @@ namespace ukBets
     {
         static void Main(string[] args)
         {
-            if ((args.Length == 1))
-            {
 
                 Console.WriteLine("1 - Iniciando Copia de Apostas");
    
@@ -79,8 +77,6 @@ namespace ukBets
                 {
                     // montar tabela de recovery repetições
                 }
-
-            }
 
         }
     }
