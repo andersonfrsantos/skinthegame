@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\NetCore\\Projetos\\ukBets\\ukBets.csproj": {}
+    "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj": {}
   },
   "projects": {
-    "C:\\NetCore\\Projetos\\ukBets\\ukBets.csproj": {
+    "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NetCore\\Projetos\\ukBets\\ukBets.csproj",
+        "projectUniqueName": "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj",
         "projectName": "ukBets",
-        "projectPath": "C:\\NetCore\\Projetos\\ukBets\\ukBets.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\NetCore\\Projetos\\ukBets\\obj\\",
+        "projectPath": "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\_GIT\\skinthegame\\ukBets\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
