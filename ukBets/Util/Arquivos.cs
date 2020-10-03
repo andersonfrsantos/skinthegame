@@ -52,7 +52,7 @@ namespace ukBets.Util
                             PlacedDate = Convert.ToDateTime(xnList[i]["PlacedDate"].InnerText),
                             StartTime = Convert.ToDateTime(xnList[i]["StartTime"].InnerText),
                             StrategyName = xnList[i]["StrategyName"].InnerText,
-                            ProfitLoss = Convert.ToDecimal(xnList[i]["ProfitLoss"].InnerText),//.Replace(".",",")),
+                            ProfitLoss = Convert.ToDouble(xnList[i]["ProfitLoss"].InnerText),//.Replace(".",",")),
                             //ShortDescription = xnList[i]["ShortDescription"].InnerText,                    
                             LossRecovery = Convert.ToDecimal(xnList[i]["LossRecovery"].InnerText),//.Replace(".",",")),
                             Currency = xnList[i]["Currency"].InnerText,
@@ -89,11 +89,6 @@ namespace ukBets.Util
 
                         BetsList.Add(Bet);
                     }
-                    //if (BetsList.Count == 1388)
-                    //{
-
-                    //Console.WriteLine("1388" + i.ToString());
-                    //}
                 }
                 return BetsList;
             }

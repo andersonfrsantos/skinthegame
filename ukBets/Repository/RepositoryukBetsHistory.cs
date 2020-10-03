@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Data;
 using System;
 
@@ -46,7 +47,6 @@ namespace ukBets.Repository
             query.AdicionarParametro("@FullMarketName", SqlDbType.VarChar, Bet.FullMarketName);
             query.AdicionarParametro("@CompetitionName", SqlDbType.VarChar, Bet.CompetitionName);
             query.AdicionarParametro("@CompetitionId", SqlDbType.VarChar, Bet.CompetitionId);
-
             query.AdicionarParametro("@SelectionName", SqlDbType.VarChar, Bet.SelectionId);
             query.AdicionarParametro("@MarketName", SqlDbType.VarChar, Bet.MarketName);
             query.AdicionarParametro("@EventTypeName", SqlDbType.VarChar, Bet.EventTypeName);
@@ -63,7 +63,6 @@ namespace ukBets.Repository
             query.AdicionarParametro("@RunnerByPosition", SqlDbType.VarChar, Bet.RunnerByPosition);
             query.AdicionarParametro("@MatchedDate", SqlDbType.DateTime, Bet.MatchedDate);
             query.AdicionarParametro("@SettledDate", SqlDbType.DateTime, Bet.SettledDate);
-
             query.AdicionarParametro("@LossRecoveryAmount", SqlDbType.Decimal, Bet.LossRecoveryAmount);
             query.AdicionarParametro("@PriceReduced", SqlDbType.VarChar, Bet.PriceReduced);
             query.AdicionarParametro("@PersistenceType", SqlDbType.VarChar, Bet.PersistenceType);
@@ -93,7 +92,80 @@ namespace ukBets.Repository
             }
 
 
+        public DataTable RetornaEstrategiaAgrupada()
+            {
+                // Limpando parãmetros existentes
+                query.LimparParametros();
+                string SQL = @" SELECT StrategyID, 
+	                                   StrategyName
+                                FROM UKBETSHISTORY
+                                group by StrategyID, StrategyName
+                                order by StrategyName";
+                // Adicionando o parâmetro para filtrar pelo código
+                return query.ExecutaConsulta(SQL);
+            }
 
+
+        public DataTable InsereRetornaJogosPorEstrategia(string pStrategyID)
+            {
+                // Limpando parãmetros existentes
+                string SQL = "";
+                query.LimparParametros();
+                
+                // Insere na Tabela
+                SQL = @" INSERT UKBETSHISTORY_RECOVERY
+                                select  Id,
+                                PlacedDate,
+		                        StrategyID,
+		                        StrategyName,
+		                        ProfitLoss,
+		                        Name,
+		                        0 [Contador]
+                                from UKBETSHISTORY
+                                where StrategyID = @StrategyID
+                                and Status = 'SETTLED'
+                                order by PlacedDate ";
+                // Adicionando o parâmetro para filtrar pela estratégia
+                query.AdicionarParametro("@StrategyID", SqlDbType.VarChar, pStrategyID);
+                query.ExecutaAtualizacao(SQL);
+
+                query.LimparParametros();
+                // Retorna um DataTable com os dados da consulta
+                SQL = @"        select  Id,
+                                PlacedDate,
+		                        StrategyID,
+		                        StrategyName,
+		                        ProfitLoss,
+		                        Name,
+		                        0 [Contador]
+                                from UKBETSHISTORY
+                                where StrategyID = @StrategyIDB
+                                and Status = 'SETTLED'
+                                order by PlacedDate ";
+                // Adicionando o parâmetro para filtrar pela estratégia
+                query.AdicionarParametro("@StrategyIDB", SqlDbType.VarChar, pStrategyID);
+                return query.ExecutaConsulta(SQL);
+            }            
+
+            public void AtualizaContadorUKBETSHISTORY_RECOVERY(Int32 pValorContador, Int32 pId)
+            {
+                // Limpando parãmetros existentes
+                query.LimparParametros();
+                string SQL = @" UPDATE UKBETSHISTORY_RECOVERY
+                                SET Contador = @Contador
+                                WHERE ID = @Id ";
+                // Adicionando o parâmetro para filtrar pela estratégia
+                query.AdicionarParametro("@Contador", SqlDbType.Int, pValorContador);
+                query.AdicionarParametro("@Id", SqlDbType.Int, pId);
+                query.ExecutaAtualizacao(SQL);
+            }            
+
+           public void TruncaTabelaUKBETSHISTORY_RECOVERY()
+            {
+                query.LimparParametros();
+                string SQL = @"TRUNCATE TABLE UKBETSHISTORY_RECOVERY";
+                             query.ExecutaAtualizacao(SQL);
+            }            
 
     }
 }
