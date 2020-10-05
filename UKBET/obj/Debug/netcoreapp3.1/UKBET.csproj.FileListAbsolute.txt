@@ -39,4 +39,3 @@ C:\_GIT\skinthegame\UKBET\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0
 C:\_GIT\skinthegame\UKBET\bin\Debug\netcoreapp3.1\FluentAssertions.dll
 C:\_GIT\skinthegame\UKBET\obj\Debug\netcoreapp3.1\UKBET.csproj.CoreCompileInputs.cache
 C:\_GIT\skinthegame\UKBET\bin\Debug\netcoreapp3.1\appsettings.json
-C:\_GIT\skinthegame\UKBET\obj\Debug\netcoreapp3.1\UKBET.csprojAssemblyReference.cache

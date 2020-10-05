@@ -26,6 +26,8 @@ namespace UKBET
 
                 Arquivos arquivo = new Arquivos();
                 XmlDocument xml = new XmlDocument();
+                XmlDocument xml_b = new XmlDocument();
+
                 var validateModel = new ValidationModelsukBetsHistory();
                 RepositoryukBetsHistory repositorioApostas = new RepositoryukBetsHistory();
                 DataTable DataTableRetornoConsulta = new DataTable();
@@ -34,20 +36,30 @@ namespace UKBET
 
                 string NomeArquivoOrigem = Configuration.GetSection("CaminhoXml").GetSection("Origem").Value;
                 string NomeArquivoDestino = Configuration.GetSection("CaminhoXml").GetSection("Destino").Value;
+                string NomeArquivoOrigem_B = Configuration.GetSection("CaminhoXml").GetSection("Origem_B").Value;
+                string NomeArquivoDestino_B = Configuration.GetSection("CaminhoXml").GetSection("Destino_B").Value;
 
-                Console.WriteLine("2 - Descompactando Arquivo .Gz");
+
+                Console.WriteLine("2 - Descompactando Arquivo .Gz -> MONITOR A");
                 arquivo.ExtractGZ(NomeArquivoOrigem, NomeArquivoDestino);
 
-                Console.WriteLine("3 - Carregando XML");
+                Console.WriteLine("3 - Carregando XML -> MONITOR A");
                 xml.Load(NomeArquivoDestino);
 
-                Console.WriteLine("4 - Transformando XML em Lista de memoria");
-                List<ukBetsHistory> BetsList = arquivo.PopulaObjetoukBetsHistory(xml);
+                Console.WriteLine("4 - Descompactando Arquivo .Gz -> MONITOR B");
+                arquivo.ExtractGZ(NomeArquivoOrigem_B, NomeArquivoDestino_B);
 
-                Console.WriteLine("5 - Inserindo no banco de dados SQL");
+                Console.WriteLine("5 - Carregando XML -> MONITOR B");
+                xml_b.Load(NomeArquivoDestino_B);
+
+                Console.WriteLine("6 - Transformando XML's A e B em Lista de memoria");
+                List<ukBetsHistory> BetsList = arquivo.PopulaObjetoukBetsHistory(xml);
+                List<ukBetsHistory> BetsList_b = arquivo.PopulaObjetoukBetsHistory(xml_b);
+
+                Console.WriteLine("8 - Inserindo no banco de dados SQL");
                 InserirBetsBancoDados(validateModel, repositorioApostas, DataTableRetornoConsulta, BetsList);
 
-                Console.WriteLine("6 - Atualizando tabela de Recovery");
+                Console.WriteLine("9 - Atualizando tabela de Recovery");
                 repositorioApostas.TruncaTabelaUKBETSHISTORY_RECOVERY();
                 dtEstrategiasAgrupadas = repositorioApostas.RetornaEstrategiaAgrupada();
                 CriarTabelaRecovery(repositorioApostas, dtJogosEstrategia, dtEstrategiasAgrupadas);
