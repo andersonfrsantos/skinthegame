@@ -1,0 +1,9 @@
+C:\_GIT\skinthegame\PE35\API\Api\bin\Debug\netstandard2.0\Api.deps.json
+C:\_GIT\skinthegame\PE35\API\Api\bin\Debug\netstandard2.0\Api.dll
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.AssemblyInfoInputs.cache
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.AssemblyInfo.cs
+C:\_GIT\skinthegame\PE35\API\Api\bin\Debug\netstandard2.0\Api.pdb
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.csproj.CoreCompileInputs.cache
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.dll
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.pdb
+C:\_GIT\skinthegame\PE35\API\Api\obj\Debug\netstandard2.0\Api.csprojAssemblyReference.cache

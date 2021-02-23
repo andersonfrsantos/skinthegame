@@ -21,7 +21,7 @@ namespace UKBET.Util
             }
         }
 
-        public List<ukBetsHistory> PopulaObjetoukBetsHistory(XmlDocument pXml)
+        public List<ukBetsHistory> PopulaObjetoukBetsHistory(XmlDocument pXml, string pMonitor)
         {
             List<ukBetsHistory> BetsList = new List<ukBetsHistory>();
 
@@ -84,6 +84,7 @@ namespace UKBET.Util
                             SizeSettled = Convert.ToDecimal(xnList[i]["SizeSettled"].InnerText),//.Replace(".",",")), 
                             SizeLapsed = Convert.ToDecimal(xnList[i]["SizeLapsed"].InnerText),//.Replace(".",",")), 
                             BSP = Convert.ToDecimal(xnList[i]["BSP"].InnerText),//.Replace(".",","))
+                            Monitor = pMonitor,
                         };
 
                         BetsList.Add(Bet);

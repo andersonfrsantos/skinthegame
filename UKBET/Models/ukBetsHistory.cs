@@ -54,6 +54,7 @@ namespace UKBET.Models
         public decimal SizeSettled { get; set; }
         public decimal SizeLapsed { get; set; }
         public decimal BSP { get; set; }
+        public string Monitor { get; set; }
     }
 
 

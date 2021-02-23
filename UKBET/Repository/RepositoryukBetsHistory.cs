@@ -9,22 +9,40 @@ namespace UKBET.Repository
     {
 
         Data.DataAccess query = new Data.DataAccess();
-        public bool InserirBet(Models.ukBetsHistory Bet)
+        public bool InserirBet(string pMonitor)
         {
             // Limpa os parâmetros existente
             query.LimparParametros();
-            string SQL = @"INSERT INTO ukBetsHistory
+            string SQL = @"INSERT INTO UKBETSHISTORY
+                        SELECT Exchange,MarketId,SelectionId,Handicap,Name,Status,Matched,Unmatched,Cancelled,AvgPrice,PriceRequested,BetType,BetId,PlacedDate,StartTime,
+                        StrategyName,ProfitLoss,LossRecovery,Currency,FullMarketName,CompetitionName,CompetitionId,SelectionName,MarketName,EventTypeName,
+                        EventTypeId,MarketType,MarketTypeVariant,SimulatedBet,TotalMatchedOnMarket,TotalMatchedOnRunner,NumberOfRunners,FavoriteByPosition,
+                        StrategyID,SelectionUniqueID,RunnerByPosition,MatchedDate,SettledDate,LossRecoveryAmount,PriceReduced,PersistenceType,OrderType,
+                        Commission,SizeCancelled,SizeSettled,SizeLapsed,BSP,{Monitor_parametro} [Monitor]
+                        FROM UKBETSHISTORY_TMP 
+                        WHERE BetId  not in (select BetId from UKBETSHISTORY where Monitor = {Monitor_parametro} )";
+
+            SQL = SQL.Replace("{Monitor_parametro}","'" + pMonitor + "'");
+            return (query.ExecutaAtualizacao(SQL) > 0);
+        }
+
+        public bool InserirBetTemp(Models.ukBetsHistory Bet)
+        {
+            // Limpa os parâmetros existente
+            query.LimparParametros();
+
+            string SQL = @"INSERT INTO UKBETSHISTORY_TMP
                 ([Exchange], [MarketId], [SelectionId], [Handicap],[Name],[Status],[Matched],[Unmatched],[Cancelled],[AvgPrice],[PriceRequested],[BetType],
                 [BetId],[PlacedDate],[StartTime],[StrategyName],[ProfitLoss],[LossRecovery],[Currency],[FullMarketName],[CompetitionName],[CompetitionId],
                 [SelectionName],[MarketName],[EventTypeName],[EventTypeId],[MarketType],[MarketTypeVariant],[SimulatedBet],[TotalMatchedOnMarket],
                 [TotalMatchedOnRunner],[NumberOfRunners],[FavoriteByPosition],[StrategyID],[SelectionUniqueID],[RunnerByPosition],[MatchedDate],[SettledDate],
-                [LossRecoveryAmount],[PriceReduced],[PersistenceType],[OrderType],[Commission],[SizeCancelled],[SizeSettled],[SizeLapsed],[BSP])
+                [LossRecoveryAmount],[PriceReduced],[PersistenceType],[OrderType],[Commission],[SizeCancelled],[SizeSettled],[SizeLapsed],[BSP],[Monitor])
                 VALUES
                 (@Exchange,@MarketId,@SelectionId,@Handicap,@Name,@Status,@Matched,@Unmatched,@Cancelled,@AvgPrice,@PriceRequested,@BetType,
                 @BetId,@PlacedDate,@StartTime,@StrategyName,@ProfitLoss,@LossRecovery,@Currency,@FullMarketName,@CompetitionName,@CompetitionId,
                 @SelectionName,@MarketName,@EventTypeName,@EventTypeId,@MarketType,@MarketTypeVariant,@SimulatedBet,@TotalMatchedOnMarket,
                 @TotalMatchedOnRunner,@NumberOfRunners,@FavoriteByPosition,@StrategyID,@SelectionUniqueID,@RunnerByPosition,@MatchedDate,@SettledDate,
-                @LossRecoveryAmount,@PriceReduced,@PersistenceType,@OrderType,@Commission,@SizeCancelled,@SizeSettled,@SizeLapsed,@BSP)";
+                @LossRecoveryAmount,@PriceReduced,@PersistenceType,@OrderType,@Commission,@SizeCancelled,@SizeSettled,@SizeLapsed,@BSP,@Monitor)";
             // Adiciona os parâmetros da instrução SQL
             query.AdicionarParametro("@Exchange", SqlDbType.VarChar, "UK");
             query.AdicionarParametro("@MarketId", SqlDbType.VarChar, Bet.MarketId);
@@ -55,8 +73,8 @@ namespace UKBET.Repository
             query.AdicionarParametro("@MarketType", SqlDbType.VarChar, Bet.MarketType);
             query.AdicionarParametro("@MarketTypeVariant", SqlDbType.VarChar, Bet.MarketTypeVariant);
             query.AdicionarParametro("@SimulatedBet", SqlDbType.VarChar, Bet.SimulatedBet);
-            query.AdicionarParametro("@TotalMatchedOnMarket", SqlDbType.Decimal, Math.Round(Bet.TotalMatchedOnMarket,2)/100);
-            query.AdicionarParametro("@TotalMatchedOnRunner", SqlDbType.Decimal, Math.Round(Bet.TotalMatchedOnRunner,2)/100);
+            query.AdicionarParametro("@TotalMatchedOnMarket", SqlDbType.Decimal, Math.Round(Bet.TotalMatchedOnMarket, 2) / 100);
+            query.AdicionarParametro("@TotalMatchedOnRunner", SqlDbType.Decimal, Math.Round(Bet.TotalMatchedOnRunner, 2) / 100);
             query.AdicionarParametro("@NumberOfRunners", SqlDbType.VarChar, Bet.NumberOfRunners);
             query.AdicionarParametro("@FavoriteByPosition", SqlDbType.VarChar, Bet.FavoriteByPosition);
             query.AdicionarParametro("@StrategyID", SqlDbType.VarChar, Bet.StrategyID);
@@ -73,11 +91,10 @@ namespace UKBET.Repository
             query.AdicionarParametro("@SizeSettled", SqlDbType.Decimal, Math.Round(Bet.SizeSettled, 2));
             query.AdicionarParametro("@SizeLapsed", SqlDbType.Decimal, Bet.SizeLapsed);
             query.AdicionarParametro("@BSP", SqlDbType.Decimal, Bet.BSP);
+            query.AdicionarParametro("@Monitor", SqlDbType.Char, Bet.Monitor);
             // Retorna a quantidade de linhas afetadas
             return (query.ExecutaAtualizacao(SQL) > 0);
         }
-
-
         public DataTable EfetuarConsultaPorSelectionUniqueID(string pSelectionUniqueID, string pBetid)
         {
             // Limpando parametros existentes
@@ -93,19 +110,33 @@ namespace UKBET.Repository
         }
 
 
+        public void TruncarTabelaUKBETSHISTORY_TMP()
+        {
+            // Limpa os parâmetros existente
+            query.LimparParametros();
+            string SQL = "TRUNCATE TABLE UKBETSHISTORY_TMP";
+            query.ExecutaAtualizacao(SQL);
+
+        }
+
+
+        
+
+
         public DataTable RetornaEstrategiaAgrupada()
         {
             // Limpando parãmetros existentes
             query.LimparParametros();
             string SQL = @" SELECT StrategyID, 
-	                                   StrategyName
+	                                   StrategyName, Monitor
                                 FROM UKBETSHISTORY
-                                group by StrategyID, StrategyName
-                                order by StrategyName";
+                                where Monitor = 'A'
+                                group by StrategyID, StrategyName, Monitor
+                                order by 3,2";
             // Adicionando o parâmetro para filtrar pelo código
             return query.ExecutaConsulta(SQL);
         }
-        public DataTable InsereRetornaJogosPorEstrategia(string pStrategyID)
+        public DataTable InsereRetornaJogosPorEstrategia(string pStrategyID, string pMonitor)
         {
             // Limpando parãmetros existentes
             string SQL = "";
@@ -113,19 +144,22 @@ namespace UKBET.Repository
 
             // Insere na Tabela
             SQL = @" INSERT UKBETSHISTORY_RECOVERY
-                                select  Id,
+                                SELECT  Id,
                                 PlacedDate,
 		                        StrategyID,
 		                        StrategyName,
 		                        ProfitLoss,
 		                        Name,
-		                        0 [Contador]
+		                        0 [Contador],
+                                Monitor
                                 from UKBETSHISTORY
                                 where StrategyID = @StrategyID
+                                and Monitor = @Monitor
                                 and Status = 'SETTLED'
                                 order by PlacedDate ";
             // Adicionando o parâmetro para filtrar pela estratégia
             query.AdicionarParametro("@StrategyID", SqlDbType.VarChar, pStrategyID);
+            query.AdicionarParametro("@Monitor", SqlDbType.Char, pMonitor);
             query.ExecutaAtualizacao(SQL);
 
             query.LimparParametros();
@@ -136,13 +170,16 @@ namespace UKBET.Repository
 		                        StrategyName,
 		                        ProfitLoss,
 		                        Name,
-		                        0 [Contador]
+		                        0 [Contador],
+                                Monitor
                                 from UKBETSHISTORY
                                 where StrategyID = @StrategyIDB
+                                and Monitor = @Monitor
                                 and Status = 'SETTLED'
                                 order by PlacedDate ";
             // Adicionando o parâmetro para filtrar pela estratégia
             query.AdicionarParametro("@StrategyIDB", SqlDbType.VarChar, pStrategyID);
+            query.AdicionarParametro("@Monitor", SqlDbType.Char, pMonitor);
             return query.ExecutaConsulta(SQL);
         }
 
