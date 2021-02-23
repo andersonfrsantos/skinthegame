@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="API\**" />
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="API\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="API\**" />
+    <None Remove="Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="API\Api\Api.csproj" />
+    <ProjectReference Include="Model\Model\Model.csproj" />
+  </ItemGroup>
+
+</Project>

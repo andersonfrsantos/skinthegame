@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKBET", "UKBET.csproj", "{F352415C-6EFF-4FB8-8109-6FA63D382FF6}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UKBET", "UKBET.csproj", "{F352415C-6EFF-4FB8-8109-6FA63D382FF6}"
+>>>>>>> master
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F352415C-6EFF-4FB8-8109-6FA63D382FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F352415C-6EFF-4FB8-8109-6FA63D382FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F352415C-6EFF-4FB8-8109-6FA63D382FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F352415C-6EFF-4FB8-8109-6FA63D382FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {656C8277-C177-4E71-BBDC-524B7C15EA8C}
+	EndGlobalSection
+EndGlobal

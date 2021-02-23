@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "OWhKBu4iUSz35A1tIQPANbiLfUVSj/CbDJo8LqhtWj34xvImHylP6unA4z/A5jnwCAd6G7p7EGLSXKLHOecCaA==",
+  "success": true,
+  "projectFilePath": "C:\\_GIT\\skinthegame\\PE35\\Model\\Model\\Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\restsharp\\106.5.4\\restsharp.106.5.4.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\restsharp.newtonsoft.json\\1.5.1\\restsharp.newtonsoft.json.1.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

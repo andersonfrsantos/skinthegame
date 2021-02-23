@@ -19,7 +19,7 @@ namespace ukBets.Models
         public DateTime PlacedDate { get; set; }
         public DateTime StartTime { get; set; }
         public string StrategyName { get; set; }
-        public decimal ProfitLoss { get; set; }
+        public double ProfitLoss { get; set; }
         public string ShortDescription { get; set; }
         public decimal LossRecovery { get; set; }
         public string Currency { get; set; }

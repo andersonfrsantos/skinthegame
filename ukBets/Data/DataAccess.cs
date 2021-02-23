@@ -22,8 +22,7 @@ namespace ukBets.Data
             {
                 // Obtemos os dados da conexão existentes no appsettings.json utilizando o ConfigurationManager
                 IConfiguration Configuration = new ConfigurationBuilder()
-                .SetBasePath("C:\\NetCore\\Projetos\\ukBets\\bin\\Debug\\netcoreapp3.1")
-                //.SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
 
