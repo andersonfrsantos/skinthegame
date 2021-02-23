@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "c:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "c:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
         "outputPath": "c:\\_GIT\\skinthegame\\ukBets\\obj\\",
+=======
+    "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj": {}
+  },
+  "projects": {
+    "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj",
+        "projectName": "ukBets",
+        "projectPath": "C:\\_GIT\\skinthegame\\ukBets\\ukBets.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\_GIT\\skinthegame\\ukBets\\obj\\",
+>>>>>>> master
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

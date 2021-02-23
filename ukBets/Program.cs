@@ -15,11 +15,14 @@ namespace ukBets
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             Console.WriteLine("1 - Iniciando Copia de Apostas");
             try
             {
                 IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();      
+=======
+>>>>>>> master
 
                 Arquivos arquivo = new Util.Arquivos();
                 XmlDocument xml = new XmlDocument();
@@ -92,6 +95,7 @@ namespace ukBets
                     }
                 }
 
+<<<<<<< HEAD
 
 
 
@@ -107,6 +111,8 @@ namespace ukBets
                 // montar tabela de recovery repetições
             }
 
+=======
+>>>>>>> master
         }
     }
 }

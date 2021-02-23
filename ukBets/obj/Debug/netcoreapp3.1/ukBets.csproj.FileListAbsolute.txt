@@ -44,10 +44,13 @@ c:\NetCore\Projetos\ukBets\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProv
 c:\NetCore\Projetos\ukBets\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
 c:\NetCore\Projetos\ukBets\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
 c:\NetCore\Projetos\ukBets\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+<<<<<<< HEAD
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.csprojAssemblyReference.cache
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.AssemblyInfoInputs.cache
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.AssemblyInfo.cs
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.csproj.CoreCompileInputs.cache
+=======
+>>>>>>> master
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\ukBets.exe
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\ukBets.deps.json
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\ukBets.runtimeconfig.json
@@ -88,6 +91,13 @@ C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\_GIT\skinthegame\ukBets\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+<<<<<<< HEAD
+=======
+C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.csprojAssemblyReference.cache
+C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.AssemblyInfoInputs.cache
+C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.AssemblyInfo.cs
+C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.csproj.CoreCompileInputs.cache
+>>>>>>> master
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.csproj.CopyComplete
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.dll
 C:\_GIT\skinthegame\ukBets\obj\Debug\netcoreapp3.1\ukBets.pdb
